@@ -1,1 +1,12 @@
+#This function's goal is to take the user input of budget and optional input of "important" which can be either food, money, or convinience.
 
+class Travel:
+'''Sets attributes
+
+Attributes:
+  destination(str):Name of the possible travel destination
+  budget(str):Brief budget to go to that place
+  important(str):Important factor of travel that is originally set to "price." User may set this to price, food or convenience.
+'''
+ def __init__(self, destination, budget, important = price):
+ 
