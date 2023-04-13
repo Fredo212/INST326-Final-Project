@@ -9,4 +9,16 @@ Attributes:
   important(str):Important factor of travel that is originally set to "price." User may set this to price, food or convenience.
 '''
  def __init__(self, destination, budget, important = price):
+ #Aki will finish this part
+ self.destination = destination
+ self.budget = budget
+ self.important = important
+
  
+ def　Readfile():
+ #Reads the file, separates by space and assign each material to corresponding variable
+ #Alfred will do this part
+ 
+ def __repr__():
+ #returns the final statement of where the user could go
+ #Younju will do this part
