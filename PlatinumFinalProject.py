@@ -4,7 +4,7 @@ class Travel:
   '''Sets attributes
     Attributes:
       destination (str): Name of the possible travel destination
-      budget (str): Brief budget to go to that place
+      budget (int): Brief budget to go to that place
       important (str, optional): Important factor of travel that is originally set to "price." User may set this to price, food or convenience.
   '''
   def __init__(self, destination, budget, important = price):
@@ -13,7 +13,7 @@ class Travel:
     self.budget = budget
     self.important = important
 
- 
+  
   def Readfile(self, filepath):
     """reads a text file and assigns values to variables based on data in the 
           text file.
@@ -30,7 +30,23 @@ class Travel:
         self.budget = line[1]
         self.important = line[2]
         
- 
+  def recommend(self, budget, important = price):
+    '''Finds the recommended destination from the file
+    Args:
+     budget (int): Brief budget to go to that place
+     important (str, optional): Important factor of travel that is originally set to "price." User may s
+    '''
+    recList = []
+    for Readfile(filepath):
+      try math.isclose(budget, self.budget, rel_tol = 300):
+        if True:
+          recList.append(destination)
+         else:
+          continue
+    return recList
+          
+      
+  
   def __repr__():
  #returns the final statement of where the user could go
  #Younju will do this part
