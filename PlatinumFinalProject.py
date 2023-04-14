@@ -50,4 +50,12 @@ class Travel:
   def __repr__():
  #returns the final statement of where the user could go
  #Younju will do this part
-    
+    """
+    Returns a string representation of the Travel object.
+    """
+    #try:
+      #return f"Travel(destination='{self.destination}',price = {self.price})
+    #except Exception as e:
+      #raise Exception(f"An error occured
+      # while generating the string representation of the Travel object: {e}")
+    return f"Travel(destination ='{self.destination}', price={self.price})"
