@@ -47,7 +47,7 @@ class Travel:
           
       
   
-  def __repr__():
+  def __repr__(self):
  #returns the final statement of where the user could go
  #Younju will do this part
     """
