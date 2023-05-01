@@ -1,6 +1,5 @@
 #This function's goal is to take the user input of budget and optional input of "important" which can be either food, money, or convinience.
-import math
-import re
+import pandas as pd
 
 class Travel:
   '''Sets attributes
@@ -31,7 +30,7 @@ class Travel:
         self.destination = line[0]
         self.budget = line[1]
         self.important = line[2]
-   
+        
   def recommend(self, budget, important = "price"):
     '''Finds the recommended destination from the file
     Args:
