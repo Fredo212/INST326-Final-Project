@@ -1,4 +1,5 @@
 #This function's goal is to take the user input of budget and optional input of "important" which can be either food, money, or convinience.
+import pandas as pd
 
 class Travel:
   '''Sets attributes
@@ -7,7 +8,7 @@ class Travel:
       budget (int): Brief budget to go to that place
       important (str, optional): Important factor of travel that is originally set to "price." User may set this to price, food or convenience.
   '''
-  def __init__(self, destination, budget, important = price):
+  def __init__(self, destination, budget, important = "price"):
  #Aki will finish this part
     self.destination = destination
     self.budget = budget
@@ -30,20 +31,15 @@ class Travel:
         self.budget = line[1]
         self.important = line[2]
         
-  def recommend(self, budget, important = price):
+  def recommend(self, budget, important = "price"):
     '''Finds the recommended destination from the file
     Args:
      budget (int): Brief budget to go to that place
      important (str, optional): Important factor of travel that is originally set to "price." User may s
     '''
-    recList = []
-    for Readfile(filepath):
-      try math.isclose(budget, self.budget, rel_tol = 300):
-        if True:
-          recList.append(destination)
-         else:
-          continue
-    return recList
+    BudgetRec = df[df["budget"] > budget - 300, ["budget"] < budget + 300]
+    recommended = BudgetRec[BudgetRec["important"] == "price"]
+    return recommended
           
       
   
