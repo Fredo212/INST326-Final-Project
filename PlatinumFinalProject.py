@@ -59,3 +59,14 @@ class Travel:
       #raise Exception(f"An error occured
       # while generating the string representation of the Travel object: {e}")
     return f"Travel(destination ='{self.destination}', price={self.price})"
+
+class Vacation(Travel): 
+  def __init__(self): 
+    super().__init__("fiji", 20000, "price")
+    print("this vacation is to: fji, it costs: 20000")
+
+  def find_most_expensive_day(day_prices): 
+    return day_prices.max() 
+  
+  
+
