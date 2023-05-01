@@ -32,19 +32,15 @@ class Travel:
         self.budget = line[1]
         self.important = line[2]
    
-  def makeList(self, budget, important = "price"):
-    #change it to Pandas sorting
-    '''Finds the recommended destination, add them to list
+  def recommend(self, budget, important = "price"):
+    '''Finds the recommended destination from the file
     Args:
      budget (int): Brief budget to go to that place
      important (str, optional): Important factor of travel that is originally set to "price." User may s
     '''
-    recList = []
-    for n in self.budget:
-      check = (math.isclose(budget, self.budget, rel_tol = 300)):
-      if check == True:
-        recList.append(destination)
-    return recList
+    BudgetRec = df[df["budget"] > budget - 300, ["budget"] < budget + 300]
+    recommended = BudgetRec[BudgetRec["important"] == "price"]
+    return recommended
           
 
   
@@ -60,5 +56,15 @@ class Travel:
       #raise Exception(f"An error occured
       # while generating the string representation of the Travel object: {e}")
     return f"Travel(destination ='{self.destination}', price={self.price})"
+
+
+class Vacation(Travel): 
+  def __init__(self): 
+    super().__init__("fiji", 20000, "price")
+    print("this vacation is to: fji, it costs: 20000")
+
+  def find_most_expensive_day(day_prices): 
+    return day_prices.max() 
   
-def main(budget, important = price):
+  
+
