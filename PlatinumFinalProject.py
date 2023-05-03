@@ -24,12 +24,9 @@ class Travel:
     """
  #Reads the file, separates by space and assign each material to corresponding variable
  #Alfred will do this part
-    with open(filepath, "r", encoding = "utf-8") as f:
-      for line in f:
-        line = line.split()
-        self.destination = line[0]
-        self.budget = line[1]
-        self.important = line[2]
+    destinations_df = pd.read_csv("Destinations_File.csv")
+
+    return destinations_df
         
   def recommend(self, budget, important = "price"):
     '''Finds the recommended destination from the file
