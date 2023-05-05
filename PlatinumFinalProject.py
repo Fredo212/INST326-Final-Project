@@ -93,6 +93,9 @@ def main(filepath, destination, budget, important_factor = "price"):
   print(df)
   print(df["Budget"])
 
+# I added something here - Younju
+  travel = Travel(destination, budget, important_factor)
+  print(travel.recommend(df, budget, important_factor))
 # Added command line arguments, these aren't required for the project 
 # requirements, so they can be removed if feel their unnecessary - Alfred
 def parse_args(arglist):
@@ -124,3 +127,74 @@ if __name__ == "__main__":
     """
     args = parse_args(sys.argv[1:])
     main(args.filepath, args.destination, args.budget, args.i__important)
+    
+# I changed order - Younju  
+"""
+class Travel:
+    def __init__(self, destination, budget, important="price"):
+        self.destination = destination
+        self.budget = budget
+        self.important = important
+
+    def recommend(self, df, budget, important="price"):
+        BudgetRec = df[(df["Budget"] > budget - 300) & (df["Budget"] < budget + 300)]
+        recommended = BudgetRec[BudgetRec["Important (optional)"].str.contains(important, case=False)]
+        return recommended
+
+    def __repr__(self):
+        return f"Travel(destination='{self.destination}', budget={self.budget}, important='{self.important}')"
+
+    def __str__(self):
+        return f"{self.destination} ({self.budget} budget, important: {self.important})"
+
+    def __lt__(self, other):
+        return self.budget < other.budget
+
+class Vacation(Travel):
+    def __init__(self):
+        super().__init__("Fiji", 20000, "price")
+        print("This vacation is to: Fiji, it costs: 20000")
+
+
+def read_file(filepath):
+    df = pd.read_csv(filepath)
+    return df
+
+
+def from_file(filepath):
+    travels = []
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.split(",")
+            destination = line[0]
+            budget = int(line[1])
+            important = line[2].strip()
+            travel = Travel(destination, budget, important)
+            travels.append(travel)
+    return travels
+    
+def parse_args(arglist):
+    parser = ArgumentParser()
+    parser.add_argument("filepath", help="path to CSV File")
+    parser.add_argument("destination", help="name of destination")
+    parser.add_argument("budget", type=int, help="budget for trip")
+    parser.add_argument("-i", "--important", default="price",
+                        help="originally set to price. User may set this to price, food or convenience.")
+    args = parser.parse_args(arglist)
+    return args
+
+
+def main(filepath, destination, budget, important_factor="price"):
+    df = read_file(filepath)
+    print(df)
+    travel_obj = Travel(destination, budget, important_factor)
+    recommended_destinations = travel_obj.recommend(df, budget, important_factor)
+    print(f"\nRecommended destinations for your budget and important factor ({important_factor}):")
+    for idx, row in recommended_destinations.iterrows():
+        print(f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})")
+
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv[1:])
+    main(args.filepath, args.destination, args.budget, args.important)
+"""
