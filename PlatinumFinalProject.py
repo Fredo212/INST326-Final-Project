@@ -1,5 +1,7 @@
 #This function's goal is to take the user input of budget and optional input of "important" which can be either food, money, or convinience.
 import pandas as pd
+from argparse import ArgumentParser
+import sys
 
 class Travel:
   '''Sets attributes
@@ -15,18 +17,18 @@ class Travel:
     self.important = important
 
   
-  def Readfile(self, filepath):
+  def Readfile(filepath):
     """reads a text file and assigns values to variables based on data in the 
           text file.
 
     Args:
-        filepath (string): file that will be passed in this function to be read
+        filepath (string): path to CSV File
     """
  #Reads the file, separates by space and assign each material to corresponding variable
  #Alfred will do this part
-    destinations_df = pd.read_csv("Destinations_File.csv")
+    df = pd.read_csv(filepath)
 
-    return destinations_df
+    return df
         
   def recommend(self, budget, important = "price"):
     '''Finds the recommended destination from the file
@@ -88,5 +90,39 @@ class Vacation(Travel):
   def find_most_expensive_day(day_prices): 
     return day_prices.max() 
   
-  
+# Added a main function, code below is just testing - Alfred
+def main(filepath, destination, budget, important_factor = "price"):
+  df = pd.read_csv(filepath)
+  print(df)
 
+# Added command line arguments, these aren't required for the project 
+# requirements, so they can be removed if feel their unnecessary - Alfred
+def parse_args(arglist):
+    """ allows use of the command line
+
+    Args:
+        filepath (string): filepath to CSV
+    
+    Returns:
+        args: the parsed arguments
+    """
+    parser = ArgumentParser()
+    parser.add_argument("filepath",
+                        help="path to CSV File")
+    parser.add_argument("destination",
+                        help="name of destination")
+    parser.add_argument("budget", type=int,
+                        help="budget for trip")
+    parser.add_argument("-i" "--Important factor", default= "price",
+                        help="originally set to price. User may set this to \
+                        price, food or convenience.")
+    args = parser.parse_args()
+
+    return args
+
+
+if __name__ == "__main__":
+    """calls functions that are at the global scope
+    """
+    args = parse_args(sys.argv[1:])
+    main(args.filepath, args.destination, args.budget)
