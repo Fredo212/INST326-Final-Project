@@ -6,18 +6,15 @@ import sys
 class Travel:
   '''Sets attributes
     Attributes:
-      destination (str): Name of the possible travel destination
-      budget (int): Brief budget to go to that place
-      important (str, optional): Important factor of travel that is originally set to "price." User may set this to price, food or convenience.
+      df(str): contains the dataframe that Readfile will read
   '''
-  def __init__(self, destination, budget, important = "price"):
+  def __init__(self, df, important):
  #Aki will finish this part
-    self.destination = destination
-    self.budget = budget
+    self.df = df
     self.important = important
 
   
-  def Readfile(filepath):
+  def Readfile(self, filepath):
     """reads a text file and assigns values to variables based on data in the 
           text file.
 
@@ -30,14 +27,14 @@ class Travel:
 
     return df
         
-  def recommend(self, budget, important = "price"):
+  def recommend(self, df, budget, important = "price"):
     '''Finds the recommended destination from the file
     Args:
      budget (int): Brief budget to go to that place
      important (str, optional): Important factor of travel that is originally set to "price." User may s
     '''
     BudgetRec = df[df["budget"] > budget - 300, ["budget"] < budget + 300]
-    recommended = BudgetRec[BudgetRec["important"] == "price"]
+    recommended = BudgetRec[BudgetRec["important"] == important]
     return recommended
           
   
