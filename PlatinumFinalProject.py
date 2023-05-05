@@ -94,6 +94,7 @@ class Vacation(Travel):
 def main(filepath, destination, budget, important_factor = "price"):
   df = pd.read_csv(filepath)
   print(df)
+  print(df["Budget"])
 
 # Added command line arguments, these aren't required for the project 
 # requirements, so they can be removed if feel their unnecessary - Alfred
@@ -101,7 +102,7 @@ def parse_args(arglist):
     """ allows use of the command line
 
     Args:
-        filepath (string): filepath to CSV
+        arglist (string): list of command-line arguments
     
     Returns:
         args: the parsed arguments
