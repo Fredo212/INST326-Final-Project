@@ -113,7 +113,7 @@ def parse_args(arglist):
                         help="name of destination")
     parser.add_argument("budget", type=int,
                         help="budget for trip")
-    parser.add_argument("-i" "--Important factor", default= "price",
+    parser.add_argument("-i" "--important", default= "price",
                         help="originally set to price. User may set this to \
                         price, food or convenience.")
     args = parser.parse_args()
@@ -125,4 +125,4 @@ if __name__ == "__main__":
     """calls functions that are at the global scope
     """
     args = parse_args(sys.argv[1:])
-    main(args.filepath, args.destination, args.budget)
+    main(args.filepath, args.destination, args.budget, args.i__important)
