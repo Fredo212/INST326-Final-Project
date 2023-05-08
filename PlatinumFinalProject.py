@@ -41,8 +41,10 @@ class Travel:
         Returns:
           recommended (pd.DataFrame): The recommended destinations based on the input parameters.
         """
+        
         BudgetRec = df[(df["Budget"] > budget - 300) & (df["Budget"] < budget + 300)]
         recommended = BudgetRec[BudgetRec["Important (optional)"].str.contains(important, case=False)]
+        
         return recommended
 
     def __repr__(self):
@@ -139,8 +141,9 @@ def recommend_destinations(df, destination, budget, important_factor):
     travel_obj = Travel(destination, budget, important_factor)
     recommended_destinations = travel_obj.recommend(df, budget, important_factor)
     print(f"\nRecommended destinations for your budget and important factor ({important_factor}):")
-    for idx, row in recommended_destinations.iterrows():
-        print(f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})")
+    # Use list comprehension to generate the recommended destinations string
+    destinations_str = '\n'.join([f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})" for _, row in recommended_destinations.iterrows()])
+    print(destinations_str)
     return recommended_destinations
 
 
