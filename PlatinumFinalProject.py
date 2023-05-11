@@ -66,9 +66,37 @@ class Travel:
         return self.budget < other.budget
 
 class Vacation(Travel):
-    def __init__(self):
-        super().__init__("Fiji", 20000, "price")
-        print("This vacation is to: Fiji, it costs: 20000")
+    """
+    A child class representing a Vacation, using all features of its parent, Travel.
+    
+    Attributes:
+      destination (str): The destination for the vacation.
+      budget (int): The budget for the vacation
+      important (str): The important factor of the vacation. Default is "luxury".
+      
+    Methods:
+      Overriden:
+      recommend(df, budget, important="price"):
+        Finds the recommended destination from the provided dataframe based on the given budget and important factor.
+        
+      all other methods from the parent class (Travel)
+    """
+    def __init__(self, destination, budget, important="luxury"):
+        super().__init__(self.destination, self.budget, self.important)
+
+    """
+        Finds the recommended destination from the provided dataframe based on the given budget and important factor.
+        
+        Args:
+          df (pd.DataFrame): The dataframe containing information about vacation destinations.
+          budget (int): The brief budget to go to that place.
+          important (str, optional): The important factor of vacation. Default is "luxury".
+          
+        Returns:
+          recommended (pd.DataFrame): The recommended vacations based on the input parameters.
+        """
+    def recommend(self, df, budget, important="luxury"):
+        return super().recommend(df, budget, important)
 
 
 def read_file(filepath):
