@@ -73,9 +73,8 @@ class Vacation(Travel):
         
       all other methods from the parent class (Travel)
     """
-  def __init__(self):
-    super().__init__("Fiji", 20000, "price")
-    print("This vacation is to: Fiji, it costs: 20000")
+  def recommend(self, df, budget, important="luxury"):
+        return super().recommend(df, budget, important)
 
 
 def read_file(filepath):
