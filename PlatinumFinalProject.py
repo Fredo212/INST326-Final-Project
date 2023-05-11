@@ -188,15 +188,15 @@ def display_discounted_price(recommended_destinations):
     print("Updating data...")
     discounted_destination = recommended_destinations.sample(n=1).iloc[0]
     original_budget = discounted_destination['Budget']
-    discounted_budget = int(original_budget * 0.8)  # Apply 20% discount
+  
 
     print(f"\nUpdated price for {discounted_destination['Destination']}:")
-    print(f"- {discounted_destination['Destination']} ({discounted_budget} budget, important: {discounted_destination['Important (optional)']})")
+    print(f"- {discounted_destination['Destination']} ({int(original_budget * 0.8)} budget, important: {discounted_destination['Important (optional)']})")
 
     print("\nRecommending destinations after the update:")
     for idx, row in recommended_destinations.iterrows():
         if row['Destination'] == discounted_destination['Destination']:
-            print(f"- {row['Destination']} ({discounted_budget} budget, important: {row['Important (optional)']})")
+            print(f"- {row['Destination']} ({int(original_budget * 0.8)} budget, important: {row['Important (optional)']})")
         else:
             print(f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})")
 
