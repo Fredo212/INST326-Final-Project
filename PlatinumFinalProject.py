@@ -58,9 +58,24 @@ class Travel:
         return self.budget < other.budget
 
 class Vacation(Travel):
-    def __init__(self):
-        super().__init__("Fiji", 20000, "price")
-        print("This vacation is to: Fiji, it costs: 20000")
+  """
+    A child class representing a Vacation, using all features of its parent, Travel.
+    
+    Attributes:
+      destination (str): The destination for the vacation.
+      budget (int): The budget for the vacation
+      important (str): The important factor of the vacation. Default is "luxury".
+      
+    Methods:
+      Overriden:
+      recommend(df, budget, important="price"):
+        Finds the recommended destination from the provided dataframe based on the given budget and important factor.
+        
+      all other methods from the parent class (Travel)
+    """
+  def __init__(self):
+    super().__init__("Fiji", 20000, "price")
+    print("This vacation is to: Fiji, it costs: 20000")
 
 
 def read_file(filepath):
@@ -115,8 +130,9 @@ def recommend_destinations(df, destination, budget, important_factor):
     travel_obj = Travel(destination, budget, important_factor)
     recommended_destinations = travel_obj.recommend(df, budget, important_factor)
     print(f"\nRecommended destinations for your budget and important factor ({important_factor}):")
-    for idx, row in recommended_destinations.iterrows():
-        print(f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})")
+     # Use list comprehension to generate the recommended destinations string
+    destinations_str = '\n'.join([f"- {row['Destination']} ({row['Budget']} budget, important: {row['Important (optional)']})" for _, row in recommended_destinations.iterrows()])
+    print(destinations_str)
     return recommended_destinations
 
 
