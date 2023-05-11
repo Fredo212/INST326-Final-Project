@@ -32,4 +32,4 @@
 |__init__, recommend|Allison Aki Parrish|Optional parameter in recommend function (‘important’ parameter set to “price”)|
 |recommend|Allison Aki Parrish|Filtering on Pandas df in order to achieve the user’s demanded destination from the dataframe|
 |parse_args()|Alfred Mbah|the ArgumentParser class from the argparse module|
-|List comprehension/recommend_destinations|Alfred Mbah|This method is used to generate the string representation of recommended destinations. The comprehension iterates over the rows of the DataFrame and constructs the desired string format. The resulting strings are joined using the newline character ‘\n.’|
+|recommend_destinations()|Alfred Mbah| List comprehension: This method is used to generate the string representation of recommended destinations. The comprehension iterates over the rows of the DataFrame and constructs the desired string format. The resulting strings are joined using the newline character ‘\n.’|
