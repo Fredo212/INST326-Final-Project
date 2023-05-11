@@ -29,7 +29,7 @@
 |with statement/from_file()|Younju Kim|Read file using pandas and iteration.|
 |Conditional statements/get_user_input() and main()|Younju Kim|In the main function, the program presents two options to a user with the answer such as yes or no. In the get_user_input function, this method checks the length of the ‘inputs’ list to determine if an important factor was provided by the user.|
 |Sequence unpacking/get_user_input()|Younju Kim|In the get_user_input function, this method is used in the line ‘destination, budget, important_factor = inputs’. It assigns the values from the ‘inputs’ list to the variables ‘destination’, ‘budget’, and ‘important_factor’ using sequence unpacking.|
-|__init__(), recommend()|Allison Aki Parrish|Optional parameter in recommend function (‘important’ parameter set to “price”)|
-|recommend|Allison Aki Parrish|Filtering on Pandas df in order to achieve the user’s demanded destination from the dataframe|
+|__init__()|Allison Aki Parrish|Optional parameter in recommend function (‘important’ parameter set to “price”)|
+|recommend()|Allison Aki Parrish|Filtering on Pandas df in order to achieve the user’s demanded destination from the dataframe|
 |parse_args()|Alfred Mbah|the ArgumentParser class from the argparse module|
 |recommend_destinations()|Alfred Mbah| List comprehension: This method is used to generate the string representation of recommended destinations. The comprehension iterates over the rows of the DataFrame and constructs the desired string format. The resulting strings are joined using the newline character ‘\n.’|
